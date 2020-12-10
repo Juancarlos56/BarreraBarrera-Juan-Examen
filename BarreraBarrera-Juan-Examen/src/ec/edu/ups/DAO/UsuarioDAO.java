@@ -10,7 +10,7 @@ public interface UsuarioDAO extends GenericDAO<Usuario, Integer>{
 
 	public abstract Usuario findByUsuarioPorCedula(String cedula);
 
-	public abstract List<Usuario> findByUsuarioPorNombreAJAX(String cedula);
+	public abstract List<Usuario> findByUsuarioPorCedulaAJAX(String cedula);
 
 	
 }

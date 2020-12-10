@@ -14,17 +14,17 @@ public class JPATelefonoDAO extends JPAGenericDAO<Telefono, Integer> implements 
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Telefono> findByUsuarioPorNombreAJAX(String nombre) {
+	public List<Telefono> findByTelefonoNumeroAJAX(String numero) {
 		
 		
-		List<Usuario> usu = null;
+		List<Telefono> usu = null;
 		
-		String consulta = "SELECT  u FROM Usuario u WHERE u.nombre LIKE :nombre";
+		String consulta = "SELECT  t FROM Telefono t WHERE t.telnumero LIKE :numero";
 		try {
 			em.clear();
-			usu = (List<Usuario>)em.createQuery(consulta).setParameter("nombre", "%"+nombre+"%").getResultList();		
+			usu = (List<Telefono>)em.createQuery(consulta).setParameter("numero", "%"+numero+"%").getResultList();		
 		} catch (Exception e) {
-			System.out.println(">>>WARNING (findByUsuarioPorNombre UsuarioDAO): " + e.getMessage());
+			System.out.println(">>>WARNING (findByTelefonoNumeroAJAX): " + e.getMessage());
 		}
 		
 		return usu;

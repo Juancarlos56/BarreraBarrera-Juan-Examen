@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.DAO.DAOFactory;
 import ec.edu.ups.entidades.Telefono;
+import ec.edu.ups.entidades.Usuario;
 
 /**
  * Servlet implementation class listarUsuarioCedula
@@ -37,16 +38,51 @@ public class listarUsuarioCedula extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		String busquedaOpcion =  request.getParameter("opcion");
+		String cedula =  request.getParameter("opcion");
 		
 		
-		List<Telefono> telefonos = DAOFactory.getFactory().getUsuarioDAO().findByUsuarioPorCedula(cedula);
-		String url = "/jsp/ListarUsuario.jsp";
-		request.setAttribute("operadoras", op_todas);
-		request.setAttribute("tipoTelefono", tipo);
-		request.getRequestDispatcher(url).forward(request, response);
-		System.out.println("Busqueda de producto pasado");
+		List<Usuario> usuarios = DAOFactory.getFactory().getUsuarioDAO().findByUsuarioPorCedulaAJAX(cedula);
 		
+		System.out.println("Cantidad de telefonos del usuario: "+usuarios.size());
+		String tablaDatos="";
+		String tablaIndex = "<table class='tg' id='tablaBuscar' style='width:60%'>"+
+				"<tr>"+
+					"<th class='tg-46ru'>Nombre del Usuario</th>"+
+					"<th class='tg-46ru'>Cedula del Usuario</th>"+
+					"<th class='tg-46ru'>Correo del Usuario</th>"+
+					"<th class='tg-46ru'>Telefono del Usuario</th>"+
+					"<th class='tg-46ru'>Tipo de telefono</th>"+
+					"<th class='tg-46ru'>Operadora del telefono</th>"+
+				"</tr>";
+		
+		
+		if(usuarios !=null){
+			
+			for (int i=0;i<usuarios.size();i++){
+				Usuario us= usuarios.get(i);
+				
+				for (int j = 0; j < us.getTelefonos().size(); j++) {
+					
+					Telefono tel= us.getTelefonos().get(j);
+					
+					tablaDatos = tablaDatos + "<tr>"+
+							"<td>"+us.getNombre()+" "+us.getApellido()+"</td>"+
+							"<td>"+us.getCedula()+"</td>"+
+							"<td>"+us.getCorreo()+"</td>"+
+							"<td>"+tel.getTelnumero()+"</td>"+
+							"<td>"+tel.getOpe_telefonos().getNombre()+"</td>"+
+							"<td>"+tel.getTip_telefonos().getTipoNombre()+"</td>"+
+							"</tr>";
+				}
+					
+			}
+			
+			tablaDatos = tablaDatos + "</table> ";
+				
+		}
+
+		tablaIndex = tablaIndex + tablaDatos;
+		out.println(tablaIndex);
 		response.setCharacterEncoding("UTF-8");
 	}
 

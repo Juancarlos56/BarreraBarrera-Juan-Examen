@@ -79,38 +79,6 @@ public class RegistrarTelefono extends HttpServlet {
 			
 		}
 		
-		
-		us = DAOFactory.getFactory().getUsuarioDAO().findByUsuarioPorCedula(cedula);
-		System.out.println("Cantidad de telefonos del usuario: "+us.getTelefonos().size());
-		String tablaDatos="";
-		String tablaIndex = "<table class='tg' id='tablaBuscar' style='width:60%'>"+
-				"<tr>"+
-					"<th class='tg-46ru'>Nombre del Usuario</th>"+
-					"<th class='tg-46ru'>Numero de telefono</th>"+
-					"<th class='tg-46ru'>Tipo de telefono</th>"+
-					"<th class='tg-46ru'>Operadora</th>"+
-				"</tr>";
-		if(us.getTelefonos() !=null){
-			
-			for (int i=0;i<us.getTelefonos().size();i++){
-				Telefono tel=us.getTelefonos().get(i);
-				
-				tablaDatos = tablaDatos + "<tr>"+
-						"<td>"+us.getNombre()+" "+us.getApellido()+"</td>"+
-						"<td>"+tel.getTelnumero()+"</td>"+
-						"<td>"+tel.getTip_telefonos().getTipoNombre()+"</td>"+
-						"<td>"+tel.getOpe_telefonos().getNombre()+"</td>"+
-						"</tr>";	
-			}
-			
-			tablaDatos = tablaDatos + "</table> ";
-				
-		}
-
-		tablaIndex = tablaIndex + tablaDatos;
-		out.println(tablaIndex);
-		
-		
 	}
 
 	/**

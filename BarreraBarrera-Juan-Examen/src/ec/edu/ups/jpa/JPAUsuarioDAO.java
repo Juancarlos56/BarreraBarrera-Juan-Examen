@@ -54,15 +54,17 @@ public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, Integer> implements Us
 	
 	
 	@SuppressWarnings("unchecked")
-	public List<Usuario> findByUsuarioPorNombreAJAX(String nombre) {
+	public List<Usuario> findByUsuarioPorCedulaAJAX(String cedula) {
 		
 		
 		List<Usuario> usu = null;
 		
-		String consulta = "SELECT  u FROM Usuario u WHERE u.nombre LIKE :nombre";
+		String consulta = "SELECT  u FROM Usuario u, Telefono t WHERE u.cedula LIKE :cedula GROUP BY u.cedula";
 		try {
-			em.clear();
-			usu = (List<Usuario>)em.createQuery(consulta).setParameter("nombre", "%"+nombre+"%").getResultList();		
+			em.clear();  
+			usu = (List<Usuario>)em.createQuery(consulta).setParameter("cedula", cedula).getResultList();
+			//em.refresh(usu);
+			System.out.println("Usuario recuperado: "+usu.get(0).getNombre());
 		} catch (Exception e) {
 			System.out.println(">>>WARNING (findByUsuarioPorNombre UsuarioDAO): " + e.getMessage());
 		}
