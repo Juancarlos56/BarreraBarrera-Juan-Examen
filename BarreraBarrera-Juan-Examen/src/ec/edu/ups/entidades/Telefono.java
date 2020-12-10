@@ -20,7 +20,7 @@ public class Telefono implements Serializable {
 	int codigoTelefono;
 	
 	
-	@Column(name="tel_numero", length=10, nullable=false, unique=true)
+	@Column(name="tel_numero", length=10, nullable=false)
     private String telnumero;
 	
 	

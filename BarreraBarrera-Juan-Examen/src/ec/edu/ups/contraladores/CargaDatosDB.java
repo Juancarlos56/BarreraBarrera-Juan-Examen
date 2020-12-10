@@ -39,15 +39,16 @@ public class CargaDatosDB extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String out = "Creadas las operadoras";
+		
+		
 		List<Operadora> op_todas;
 		List<Tipo> tipo;
 		Operadora operadora ;
 		Tipo tp;
 		try {
 			op_todas = DAOFactory.getFactory().getOperadoraDAO().findAll();
-			tipo = DAOFactory.getFactory().getTipoDAO().findAll();
 			System.out.println("Operadoras: "+op_todas);
+			tipo = DAOFactory.getFactory().getTipoDAO().findAll();
 			System.out.println("Tipo: "+tipo);
 		} catch (Exception e) {
 			op_todas = null;
@@ -83,7 +84,6 @@ public class CargaDatosDB extends HttpServlet {
 		System.out.println("Busqueda de producto pasado");
 		
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().append(out);
 		
 	}
 

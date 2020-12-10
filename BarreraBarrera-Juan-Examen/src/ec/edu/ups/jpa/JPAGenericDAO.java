@@ -21,6 +21,7 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID>  {
 
     @Override
     public void create(T entity) {
+    	em.clear();
 		em.getTransaction().begin();
 		try {
 		    em.persist(entity);

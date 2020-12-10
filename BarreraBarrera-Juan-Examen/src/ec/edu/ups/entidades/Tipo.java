@@ -78,41 +78,5 @@ public class Tipo implements Serializable {
 		return serialVersionUID;
 	}
 
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((telefonosTipos == null) ? 0 : telefonosTipos.hashCode());
-		result = prime * result + tipoCodigo;
-		result = prime * result + ((tipoNombre == null) ? 0 : tipoNombre.hashCode());
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Tipo other = (Tipo) obj;
-		if (telefonosTipos == null) {
-			if (other.telefonosTipos != null)
-				return false;
-		} else if (!telefonosTipos.equals(other.telefonosTipos))
-			return false;
-		if (tipoCodigo != other.tipoCodigo)
-			return false;
-		if (tipoNombre == null) {
-			if (other.tipoNombre != null)
-				return false;
-		} else if (!tipoNombre.equals(other.tipoNombre))
-			return false;
-		return true;
-	}
-
 	
 }

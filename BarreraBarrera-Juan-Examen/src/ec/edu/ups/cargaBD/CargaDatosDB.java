@@ -15,6 +15,12 @@ public class CargaDatosDB {
 	
 	
 	public static void main(String[] args) {
+		
+		//Usuario us = DAOFactory.getFactory().getUsuarioDAO().findByUsuarioPorCedula("0104216999");
+		//DAOFactory.getFactory().getUsuarioDAO().read(us.getCodigoUsu());
+		//System.out.println("Ana "+us.toString());
+		//System.out.println("Ana tel "+us.toString());
+		
 		//UsuarioDAO ud = DAOFactory.getFactory().getUsuarioDAO();
 		//TelefonoDAO tf = DAOFactory.getFactory().getTelefonoDAO();
 		//TipoDAO tp = DAOFactory.getFactory().getTipoDAO();
@@ -28,11 +34,7 @@ public class CargaDatosDB {
 		
 		//Tipo tp1 = new Tipo(0, "Convencional");
 		//System.out.println("Creacion de TIPO en DB: "+tp.toString());
-		//tp.create(tp1);
-		
-		//Tipo tp2 = new Tipo(0, "Convencional");
-		//System.out.println("Creacion de TIPO en DB: "+tp.toString());
-		//tp.create(tp2);
+		//.create(tp1);
 		
 		//Tipo tp3 = new Tipo(0, "Celular");
 		//System.out.println("Creacion de TIPO en DB: "+tp3.toString());
