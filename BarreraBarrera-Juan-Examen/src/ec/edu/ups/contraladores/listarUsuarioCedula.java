@@ -41,9 +41,9 @@ public class listarUsuarioCedula extends HttpServlet {
 		String cedula =  request.getParameter("opcion");
 		
 		
-		List<Usuario> usuarios = DAOFactory.getFactory().getUsuarioDAO().findByUsuarioPorCedulaAJAX(cedula);
+		List<Telefono> telefonos = DAOFactory.getFactory().getTelefonoDAO().findByUsuarioPorCedulaAJAX(cedula);
 		
-		System.out.println("Cantidad de telefonos del usuario: "+usuarios.size());
+		System.out.println("Cantidad de telefonos del usuario: "+telefonos.size());
 		String tablaDatos="";
 		String tablaIndex = "<table class='tg' id='tablaBuscar' style='width:60%'>"+
 				"<tr>"+
@@ -56,25 +56,20 @@ public class listarUsuarioCedula extends HttpServlet {
 				"</tr>";
 		
 		
-		if(usuarios !=null){
+		if(telefonos !=null){
 			
-			for (int i=0;i<usuarios.size();i++){
-				Usuario us= usuarios.get(i);
+			for (int i=0;i<telefonos.size();i++){
+				Telefono tf = telefonos.get(i);
 				
-				for (int j = 0; j < us.getTelefonos().size(); j++) {
-					
-					Telefono tel= us.getTelefonos().get(j);
 					
 					tablaDatos = tablaDatos + "<tr>"+
-							"<td>"+us.getNombre()+" "+us.getApellido()+"</td>"+
-							"<td>"+us.getCedula()+"</td>"+
-							"<td>"+us.getCorreo()+"</td>"+
-							"<td>"+tel.getTelnumero()+"</td>"+
-							"<td>"+tel.getOpe_telefonos().getNombre()+"</td>"+
-							"<td>"+tel.getTip_telefonos().getTipoNombre()+"</td>"+
-							"</tr>";
-				}
-					
+							"<td>"+tf.getUsu_telefonos().getNombre()+" "+tf.getUsu_telefonos().getApellido()+"</td>"+
+							"<td>"+tf.getUsu_telefonos().getCedula()+"</td>"+
+							"<td>"+tf.getUsu_telefonos().getCorreo()+"</td>"+
+							"<td>"+tf.getTelnumero()+"</td>"+
+							"<td>"+tf.getOpe_telefonos().getNombre()+"</td>"+
+							"<td>"+tf.getTip_telefonos().getTipoNombre()+"</td>"+
+							"</tr>";	
 			}
 			
 			tablaDatos = tablaDatos + "</table> ";

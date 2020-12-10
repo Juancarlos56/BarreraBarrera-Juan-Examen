@@ -34,7 +34,7 @@ public class CargaDatosDB {
 		
 		//Tipo tp1 = new Tipo(0, "Convencional");
 		//System.out.println("Creacion de TIPO en DB: "+tp.toString());
-		//.create(tp1);
+		//tp.create(tp1);
 		
 		//Tipo tp3 = new Tipo(0, "Celular");
 		//System.out.println("Creacion de TIPO en DB: "+tp3.toString());
