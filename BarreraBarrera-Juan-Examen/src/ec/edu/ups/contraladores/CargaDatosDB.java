@@ -74,7 +74,7 @@ public class CargaDatosDB extends HttpServlet {
 		}
 		
 		System.out.println("Operadoas"+ op_todas.size());
-		System.out.println("Operadoas"+ op_todas.size());
+		//System.out.println("Operadoas"+ op_todas.size());
 		
 		String url = "/jsp/RegistrarUsuario.jsp";
 		request.setAttribute("operadoras", op_todas);
