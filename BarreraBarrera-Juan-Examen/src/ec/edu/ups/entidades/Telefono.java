@@ -39,6 +39,20 @@ public class Telefono implements Serializable {
 	public Telefono() {
 		super();
 	}
+	
+	
+
+	public Telefono(int codigoTelefono, String telnumero, Usuario usu_telefonos, Tipo tip_telefonos,
+			Operadora ope_telefonos) {
+		super();
+		this.codigoTelefono = codigoTelefono;
+		this.telnumero = telnumero;
+		this.usu_telefonos = usu_telefonos;
+		this.tip_telefonos = tip_telefonos;
+		this.ope_telefonos = ope_telefonos;
+	}
+
+
 
 	public int getCodigoTelefono() {
 		return codigoTelefono;
